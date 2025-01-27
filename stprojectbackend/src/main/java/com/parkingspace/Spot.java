@@ -1,11 +1,6 @@
 package com.parkingspace;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "spot")
@@ -15,7 +10,7 @@ public class Spot {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long spotId;
 
-    @Column(nullable = false)
+    @Column(name = "spot_name")  // Maps to the "spot_name" column in the database
     private String spotName;
 
     // Getters and Setters
