@@ -2,17 +2,17 @@ package com.parkingspace;
 
 import java.math.BigDecimal;
 
-public class  SpotMonthlyIncome{
+public class SpotMonthlyIncome {
 
     private String month;
     private BigDecimal income;
-    private String spotName;
+    private String parkingSpotName; // Changed to parkingSpotName
     private int year;
 
-    public SpotMonthlyIncome(String month, BigDecimal income, String spotName, int year) {
+    public SpotMonthlyIncome(String month, BigDecimal income, String parkingSpotName, int year) {
         this.month = month;
         this.income = income;
-        this.spotName = spotName;
+        this.parkingSpotName = parkingSpotName; // Changed to parkingSpotName
         this.year = year;
     }
 
@@ -33,12 +33,12 @@ public class  SpotMonthlyIncome{
         this.income = income;
     }
 
-    public String getSpotName() {
-        return spotName;
+    public String getParkingSpotName() { // Changed to parkingSpotName
+        return parkingSpotName;
     }
 
-    public void setSpotName(String spotName) {
-        this.spotName = spotName;
+    public void setParkingSpotName(String parkingSpotName) { // Changed to parkingSpotName
+        this.parkingSpotName = parkingSpotName;
     }
 
     public int getYear() {
