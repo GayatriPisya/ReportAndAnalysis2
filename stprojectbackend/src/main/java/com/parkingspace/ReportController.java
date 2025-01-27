@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RestController
 @RequestMapping("/api/reports")
 @CrossOrigin(origins = "http://localhost:4200")
@@ -31,6 +32,7 @@ public class ReportController {
         }
         return monthlyIncome;
     }
+
     @GetMapping("/available-years")
     public List<Integer> getAvailableYears() {
         return reportService.getAvailableYears(); // Call service to fetch available years
