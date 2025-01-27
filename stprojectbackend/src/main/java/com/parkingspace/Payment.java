@@ -22,7 +22,7 @@ public class Payment {
     private LocalDateTime dateTime; // Payment date and time
 
     @Column(nullable = false)
-    private String spotName; // Name of the parking spot
+    private String parkingSpotName; // Changed from spotName to parkingSpotName
 
     public Payment() {}
 
@@ -59,11 +59,11 @@ public class Payment {
         this.dateTime = dateTime;
     }
 
-    public String getSpotName() {
-        return spotName;
+    public String getParkingSpotName() { // Getter for the changed field
+        return parkingSpotName;
     }
 
-    public void setSpotName(String spotName) {
-        this.spotName = spotName;
+    public void setParkingSpotName(String parkingSpotName) { // Setter for the changed field
+        this.parkingSpotName = parkingSpotName;
     }
 }
