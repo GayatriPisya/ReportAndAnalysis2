@@ -4,13 +4,13 @@ public class SpotMonthlyUser {
 
     private String month;
     private int count;
-    private String spotName;
+    private String parkingSpotName; // Changed to parkingSpotName
     private int year;
 
-    public SpotMonthlyUser(String month, int count, String spotName, int year) {
+    public SpotMonthlyUser(String month, int count, String parkingSpotName, int year) {
         this.month = month;
         this.count = count;
-        this.spotName = spotName;
+        this.parkingSpotName = parkingSpotName; // Changed to parkingSpotName
         this.year = year;
     }
 
@@ -31,12 +31,12 @@ public class SpotMonthlyUser {
         this.count = count;
     }
 
-    public String getSpotName() {
-        return spotName;
+    public String getParkingSpotName() { // Changed to parkingSpotName
+        return parkingSpotName;
     }
 
-    public void setSpotName(String spotName) {
-        this.spotName = spotName;
+    public void setParkingSpotName(String parkingSpotName) { // Changed to parkingSpotName
+        this.parkingSpotName = parkingSpotName;
     }
 
     public int getYear() {
