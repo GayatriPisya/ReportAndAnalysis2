@@ -20,7 +20,7 @@ public class ReportService {
                 .map(row -> new SpotMonthlyUser(
                         getMonthName((Integer) row[0]), // Convert month number to name
                         ((Long) row[1]).intValue(),
-                        (String) row[2],
+                        (String) row[2], // Changed to parkingSpotName
                         year))
                 .collect(Collectors.toList());
     }
@@ -32,7 +32,7 @@ public class ReportService {
                 .map(row -> new SpotMonthlyIncome(
                         getMonthName((Integer) row[0]), // Convert month number to name
                         (BigDecimal) row[1],
-                        (String) row[2],
+                        (String) row[2], // Changed to parkingSpotName
                         year))
                 .collect(Collectors.toList());
     }
