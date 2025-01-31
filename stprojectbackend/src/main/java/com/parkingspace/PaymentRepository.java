@@ -9,18 +9,19 @@ import java.util.List;
 @Repository
 public interface PaymentRepository extends JpaRepository<Payment, Long> {
 
-    @Query("SELECT MONTH(p.dateTime) AS month, COUNT(p.paymentId) AS userCount, p.parkingSpotName " + // Changed to parkingSpotName
-           "FROM Payment p WHERE p.status = 'Paid' AND YEAR(p.dateTime) = :year " +
-           "GROUP BY MONTH(p.dateTime), p.parkingSpotName " +
-           "ORDER BY MONTH(p.dateTime), p.parkingSpotName")
-    List<Object[]> findMonthlyUserCountsByYearAndSpot(int year);
-
     // Fetch monthly income grouped by spot for a specific year
-    @Query("SELECT MONTH(p.dateTime) AS month, SUM(p.amountPaid) AS totalIncome, p.parkingSpotName " + // Changed to parkingSpotName
+    @Query("SELECT MONTH(p.dateTime) AS month, SUM(p.amountPaid) AS totalIncome, p.parkingSpotName " +
            "FROM Payment p WHERE p.status = 'Paid' AND YEAR(p.dateTime) = :year " +
            "GROUP BY MONTH(p.dateTime), p.parkingSpotName " +
            "ORDER BY MONTH(p.dateTime), p.parkingSpotName")
     List<Object[]> findMonthlyIncomeByYearAndSpot(int year);
+
+    // Fetch monthly user count for a specific year (grouped by month)
+    @Query("SELECT MONTH(p.dateTime) AS month, COUNT(DISTINCT p.paymentId) AS userCount " +
+           "FROM Payment p WHERE p.status = 'Paid' AND YEAR(p.dateTime) = :year " +
+           "GROUP BY MONTH(p.dateTime) " +
+           "ORDER BY MONTH(p.dateTime)")
+    List<Object[]> findMonthlyUserCountsByYear(int year);
 
     // Fetch distinct years from the payment data
     @Query("SELECT DISTINCT YEAR(p.dateTime) FROM Payment p")
