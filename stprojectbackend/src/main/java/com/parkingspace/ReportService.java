@@ -13,14 +13,14 @@ public class ReportService {
     @Autowired
     private PaymentRepository paymentRepository;
 
-    // Fetch monthly user data grouped by spot
+    // Fetch monthly user data grouped by month
     public List<SpotMonthlyUser> getSpotMonthlyUserCounts(int year) {
-        List<Object[]> results = paymentRepository.findMonthlyUserCountsByYearAndSpot(year);
+        List<Object[]> results = paymentRepository.findMonthlyUserCountsByYear(year);
         return results.stream()
                 .map(row -> new SpotMonthlyUser(
                         getMonthName((Integer) row[0]), // Convert month number to name
-                        ((Long) row[1]).intValue(),
-                        (String) row[2], // Changed to parkingSpotName
+                        ((Long) row[1]).intValue(), // User count
+                        null, // Ignore parking spot name for user count report
                         year))
                 .collect(Collectors.toList());
     }
@@ -31,8 +31,8 @@ public class ReportService {
         return results.stream()
                 .map(row -> new SpotMonthlyIncome(
                         getMonthName((Integer) row[0]), // Convert month number to name
-                        (BigDecimal) row[1],
-                        (String) row[2], // Changed to parkingSpotName
+                        (BigDecimal) row[1], // Income amount
+                        (String) row[2], // Parking spot name
                         year))
                 .collect(Collectors.toList());
     }
